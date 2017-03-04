@@ -6,6 +6,9 @@ public class Fecha {
 	public Fecha(int dia,int mes,int anio) {
 		this.dia=dia; this.mes =mes; this.anio= anio;
 	}
+	private int diasMes(){
+		return 0;
+	}
 	public boolean valida() {
 		if (dia < 1 || dia > 31)    
 			return false; 
@@ -13,7 +16,10 @@ public class Fecha {
 			return false;
 		if(anio < 0 )  
 			return false;
-		//determinamos la cantidad de días del mes:
+		if(dia> diasMes()) 
+			return false;
+		   else return true;
+		//determinamos la cantidad de dÃ­as del mes:
 		int diasMes=0;
 		switch(mes){ 
 		case 1: 
@@ -29,7 +35,7 @@ public class Fecha {
 		case 9:
 		case 11: diasMes=30;
 		break;
-		case 2: // verificación de año bisiesto
+		case 2: // verificaciÃ³n de aÃ±o bisiesto
 			if( (anio%400==0) || ( (anio%4==0) && (anio%100!=0)) )
 				diasMes=29;
 			else
