@@ -13,8 +13,13 @@ public class Fecha {
 			return false;
 		if(anio < 0 )  
 			return false;
-		//determinamos la cantidad de días del mes:
-		int diasMes=0;
+		if(dia> diasMes()) 
+			return false;
+		   else return true;
+	}
+	private int diasMes(){
+		//determinamos la cantidad de dÃ­as del mes:
+	    int diasMes=0;
 		switch(mes){ 
 		case 1: 
 		case 3: 
@@ -29,16 +34,14 @@ public class Fecha {
 		case 9:
 		case 11: diasMes=30;
 		break;
-		case 2: // verificación de año bisiesto
+		case 2: // verificaciÃ³n de aÃ±o bisiesto
 			if( (anio%400==0) || ( (anio%4==0) && (anio%100!=0)) )
 				diasMes=29;
 			else
 				diasMes= 28;
 			break;
 		}
-		if(dia> diasMes)
-			return false;
-		else
-			return true;
+		return diasMes;
 	}
+	
 }
