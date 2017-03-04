@@ -1,11 +1,6 @@
 
 public class Fecha {
-	private int dia; 
-	private int mes; 
-	private int anio;
-	public Fecha(int dia,int mes,int anio) {
-		this.dia=dia; this.mes =mes; this.anio= anio;
-	}
+	
 	// Programa para saber si una fecha es correcta o no
 	private int dia; 
 	private int mes; 
