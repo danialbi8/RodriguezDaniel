@@ -6,6 +6,14 @@ public class Fecha {
 	public Fecha(int dia,int mes,int anio) {
 		this.dia=dia; this.mes =mes; this.anio= anio;
 	}
+	// Programa para saber si una fecha es correcta o no
+	private int dia; 
+	private int mes; 
+	private int anio;
+	public Fecha3(int dia,int mes,int anio) {
+		this.dia=dia; this.mes =mes; this.anio= anio;
+	}
+	// Comprueba que los días, meses y años sean válidos
 	public boolean valida() {
 		if (dia < 1 || dia > 31)    
 			return false; 
@@ -13,8 +21,19 @@ public class Fecha {
 			return false;
 		if(anio < 0 )  
 			return false;
-		//determinamos la cantidad de d�as del mes:
-		int diasMes=0;
+		if(dia> diasMes()) 
+			return false;
+		   else return true;
+	}
+	//Comprueba si el año es bisiesto o no
+	private boolean bisiesto( ) {
+		if( (anio%400==0) || ( (anio%4==0) && (anio%100!=0)) )
+			return true;
+		else return false;
+	}
+	private int diasMes(){
+		//determinamos la cantidad de días del mes:
+	    int diasMes=0;
 		switch(mes){ 
 		case 1: 
 		case 3: 
@@ -29,16 +48,13 @@ public class Fecha {
 		case 9:
 		case 11: diasMes=30;
 		break;
-		case 2: // verificaci�n de a�o bisiesto
-			if( (anio%400==0) || ( (anio%4==0) && (anio%100!=0)) )
+		case 2: // verificación de año bisiesto
+			if( bisiesto() )
 				diasMes=29;
 			else
 				diasMes= 28;
 			break;
 		}
-		if(dia> diasMes)
-			return false;
-		else
-			return true;
+		return diasMes;
 	}
 }
